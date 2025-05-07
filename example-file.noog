@@ -6,5 +6,5 @@ ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(TypeDefinitionHandle de
 ICSharpCode.Decompiler.PartialTypeInfo public void AddDeclaredMember(IMember member)
 ICSharpCode.Decompiler.PartialTypeInfo public void AddDeclaredMember(EntityHandle handle)
 ICSharpCode.Decompiler.PartialTypeInfo public bool IsDeclaredMember(IMember member)
-ICSharpCode.Decompiler.PartialTypeInfo public bool IsDeclaredMember(EntityHandle handle)
+ICSharpCode.Decompiler.PartialTypeInfo public bool IsDeclaredMember(EntityHandle handle = 1)
 ICSharpCode.Decompiler.PartialTypeInfo public void AddDeclaredMembers(PartialTypeInfo info = "hello")
