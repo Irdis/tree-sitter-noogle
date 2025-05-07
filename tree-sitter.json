@@ -9,6 +9,9 @@
       "file-types": [
         "noog"
       ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
       "injection-regex": "^noogle$",
       "class-name": "TreeSitterNoogle"
     }
