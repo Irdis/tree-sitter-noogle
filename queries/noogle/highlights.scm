@@ -13,7 +13,6 @@
 
 [
   "."
-  ","
 ] @punctuation.delimiter
 
 (arg
