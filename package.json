@@ -1,26 +1,5 @@
 {
-  "files": [
-    "grammar.js",
-    "tree-sitter.json",
-    "binding.gyp",
-    "prebuilds/**",
-    "bindings/node/*",
-    "queries/*",
-    "src/**",
-  ],
   "dependencies": {
     "tree-sitter-cli": "^0.25.3"
   }
-  "tree-sitter": [
-    {
-      "scope": "source.noogle",
-      "file-types": [
-        "noog"
-      ],
-      "injection-regex": "noog",
-      "highlights": [
-        "queries/noogle/highlights.scm"
-      ]
-    }
-  ],
 }

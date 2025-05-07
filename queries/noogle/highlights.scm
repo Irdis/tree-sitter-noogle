@@ -11,9 +11,17 @@
   (null_literal)
 ] @constant.builtin
 
+;; Tokens
+
 [
   "."
+  ";"
 ] @punctuation.delimiter
+
+[
+ "get"
+ "set"
+] @keyword
 
 (arg
   arg_name: (identifier) @variable.parameter)

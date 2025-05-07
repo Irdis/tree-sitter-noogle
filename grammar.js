@@ -48,11 +48,13 @@ module.exports = grammar({
     ),
     getter: $ => seq(
       optional(seq($.accessibility, " ")),
-      "get;"
+      "get",
+      ";"
     ),
     setter: $ => seq(
       optional(seq($.accessibility, " ")),
-      "set;"
+      "set",
+      ";"
     ),
 
     static: $ => "static",

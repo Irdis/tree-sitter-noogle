@@ -242,7 +242,11 @@
         },
         {
           "type": "STRING",
-          "value": "get;"
+          "value": "get"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -272,7 +276,11 @@
         },
         {
           "type": "STRING",
-          "value": "set;"
+          "value": "set"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
