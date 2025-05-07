@@ -1,0 +1,196 @@
+/**
+ * @file Noogle grammar for tree-sitter
+ * @author Ivan <ivannovitskii@gmail.com>
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
+const decimalDigitSequence = /([0-9][0-9_]*[0-9]|[0-9])/;
+
+module.exports = grammar({
+  name: "noogle",
+  extras: (_) => ["\r"],
+  word: $ => $.identifier,
+
+  rules: {
+    source_file: $ => repeat($.definition),
+    definition: $ => seq($.path, " ", $.signature, "\n"),
+    path: $ => seq(
+      field("namespace", $.namespace_part), 
+      ".", 
+      field("class", $.identifier)),
+    namespace_part: $ => choice(
+      seq($.namespace_part, ".", $.identifier),
+      $.identifier
+    ),
+
+    signature: $ => choice(
+      $.property_signature,
+      $.method_signature,
+      $.enum_signature,
+    ),
+
+    property_signature: $ => seq(
+      $.accessibility,
+      " ",
+      optional(seq($.static, " ")),
+      field("return_type", $.type),
+      " ",
+      field("name", $.identifier), 
+      optional(seq(
+        " {",
+        optional(seq(" ", $.getter)),
+        optional(seq(" ", $.setter)),
+        " }"
+      )),
+    ),
+    getter: $ => seq(
+      optional(seq($.accessibility, " ")),
+      "get;"
+    ),
+    setter: $ => seq(
+      optional(seq($.accessibility, " ")),
+      "set;"
+    ),
+
+    static: $ => "static",
+    accessibility: $ => choice(
+      "none",
+      "private", 
+      "protectedandinternal", 
+      "protected", 
+      "internal", 
+      "protectedorinternal", 
+      "public"
+    ),
+
+    method_signature: $ => seq(
+      $.accessibility,
+      " ",
+      optional(seq($.static, " ")),
+      field("return_type", $.type),
+      " ",
+      field("name", choice($.identifier, '.ctor')), 
+      "(",
+      field("parameters", optional($.arg_list)),
+      ")",
+    ),
+
+    arg_list: $ => choice(
+      seq($.arg_list, ", ", $.arg),
+      $.arg
+    ),
+    arg: $ => seq(
+      field("arg_type", $.type),
+      " ",
+      field("arg_name", $.identifier),
+      optional(seq(" = ", $.default_value))
+    ),
+
+    enum_signature: $ => seq(
+      "enum",
+      " ",
+      field("enum", $.identifier),
+      ".",
+      field("field", $.identifier),
+      optional(seq(" = ", $.default_value))
+    ),
+
+    type_list: $ => choice(
+      seq($.type_list, ", ", $.type),
+      $.type
+    ),
+    type: $ => seq(
+      choice($.generic_type, $.simple_type), 
+      optional($._array_modifier),
+      optional($._ref_modifier)
+    ),
+    _array_modifier: $ => repeat1(seq('[', optional($._commas), ']')),
+    _ref_modifier: $ => repeat1($._refs),
+    simple_type: $ => $.identifier,
+    generic_type: $ => seq($.identifier, "<", $.type_list, ">"),
+
+    default_value: $ => choice(
+      $.char_literal,
+      $.string_literal,
+      $.integer_literal,
+      $.real_literal,
+      $.null_literal,
+      $.boolean_literal,
+      $.identifier
+    ),
+
+    null_literal: $ => "null",
+    char_literal: $ => seq(
+      '\'',
+      choice($.character_literal_content, $.escape_sequence),
+      '\'',
+    ),
+    character_literal_content: $ => token.immediate(/[^'\\]/),
+
+    string_literal: $ => seq(
+      '"',
+      repeat(choice(
+        $.string_literal_content,
+        $.escape_sequence,
+      )),
+      '"'
+    ),
+    string_literal_content: $ => choice(
+      token.immediate(prec(1, /[^"\\\n]+/)),
+      prec(2, token.immediate(seq('\\', /[^abefnrtv'\"\\\?0]/))),
+    ),
+    escape_sequence: $ => token(choice(
+      /\\x[0-9a-fA-F]{2,4}/,
+      /\\u[0-9a-fA-F]{4}/,
+      /\\U[0-9a-fA-F]{8}/,
+      /\\[abefnrtv'\"\\\?0]/,
+    )),
+
+    integer_literal: $ => token(seq(
+      choice(
+        decimalDigitSequence, // Decimal
+        (/0[xX][0-9a-fA-F_]*[0-9a-fA-F]+/), // Hex
+        (/0[bB][01_]*[01]+/), // Binary
+      ),
+      optional(/([uU][lL]?|[lL][uU]?)/),
+    )),
+
+    real_literal: $ => {
+      const suffix = /[fFdDmM]/;
+      const exponent = /[eE][+-]?[0-9][0-9_]*/;
+      return token(choice(
+        seq(
+          decimalDigitSequence,
+          '.',
+          decimalDigitSequence,
+          optional(exponent),
+          optional(suffix),
+        ),
+        seq(
+          '.',
+          decimalDigitSequence,
+          optional(exponent),
+          optional(suffix),
+        ),
+        seq(
+          decimalDigitSequence,
+          exponent,
+          optional(suffix),
+        ),
+        seq(
+          decimalDigitSequence,
+          suffix,
+        ),
+      ));
+    },
+
+    boolean_literal: $ => choice('true', 'false'),
+
+    identifier: $ => /[a-zA-Z0-9_-]+/,
+    _commas: $ => /[,]+/,
+    _refs: $ => /[*&]+/,
+  }
+});
