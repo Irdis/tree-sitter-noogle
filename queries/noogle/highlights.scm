@@ -5,3 +5,16 @@
   (real_literal)
   (integer_literal)
 ] @number
+
+[
+  (boolean_literal)
+  (null_literal)
+] @constant.builtin
+
+[
+  "."
+  ","
+] @punctuation.delimiter
+
+(arg
+  arg_name: (identifier) @variable.parameter)
