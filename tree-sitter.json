@@ -6,13 +6,14 @@
       "camelcase": "Noogle",
       "title": "Noogle",
       "scope": "source.noogle",
+      "path": ".",
       "file-types": [
         "noog"
       ],
       "highlights": [
-        "queries/highlights.scm"
+        "queries/noogle/highlights.scm"
       ],
-      "injection-regex": "^noogle$",
+      "injection-regex": "noog",
       "class-name": "TreeSitterNoogle"
     }
   ],
