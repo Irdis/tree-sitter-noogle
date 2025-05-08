@@ -12,7 +12,6 @@
 ] @constant.builtin
 
 (simple_type) @type
-(generic_type (identifier)) @type
 
 (enum_signature
   enum: (identifier) @type)

@@ -665,16 +665,12 @@
         "name": "_refs"
       }
     },
-    "simple_type": {
-      "type": "SYMBOL",
-      "name": "identifier"
-    },
     "generic_type": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "simple_type"
         },
         {
           "type": "STRING",
@@ -689,6 +685,10 @@
           "value": ">"
         }
       ]
+    },
+    "simple_type": {
+      "type": "SYMBOL",
+      "name": "identifier"
     },
     "default_value": {
       "type": "CHOICE",

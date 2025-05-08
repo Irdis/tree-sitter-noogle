@@ -186,7 +186,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "simple_type",
           "named": true
         },
         {

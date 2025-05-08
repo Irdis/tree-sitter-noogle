@@ -2,7 +2,7 @@ ICSharpCode.Decompiler.DecompilationProgress public void .ctor()
 ICSharpCode.Decompiler.PartialTypeInfo public TypeDefinitionHandle DeclaringTypeDefinitionHandle { get; set; }
 ICSharpCode.Decompiler.PartialTypeInfo public string DebugOutput { get; }
 ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(ITypeDefinition declaringTypeDefinition)
-ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(TypeDefinitionHandle declaringTypeDefinitionHandle)
+ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(List<TypeDefinitionHandle, a> declaringTypeDefinitionHandle)
 ICSharpCode.Decompiler.PartialTypeInfo public void AddDeclaredMember(IMember member)
 ICSharpCode.Decompiler.PartialTypeInfo public void AddDeclaredMember(EntityHandle handle, Hello abc)
 ICSharpCode.Decompiler.PartialTypeInfo public bool IsDeclaredMember(IMember member)

@@ -112,8 +112,8 @@ module.exports = grammar({
     ),
     _array_modifier: $ => repeat1(seq('[', optional($._commas), ']')),
     _ref_modifier: $ => repeat1($._refs),
+    generic_type: $ => seq($.simple_type, "<", $.type_list, ">"),
     simple_type: $ => $.identifier,
-    generic_type: $ => seq($.identifier, "<", $.type_list, ">"),
 
     default_value: $ => choice(
       $.char_literal,
