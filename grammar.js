@@ -40,10 +40,12 @@ module.exports = grammar({
       " ",
       field("name", $.identifier), 
       optional(seq(
-        " {",
+        " ",
+        "{",
         optional(seq(" ", $.getter)),
         optional(seq(" ", $.setter)),
-        " }"
+        " ",
+        "}"
       )),
     ),
     getter: $ => seq(
@@ -80,7 +82,7 @@ module.exports = grammar({
     ),
 
     arg_list: $ => choice(
-      seq($.arg_list, ", ", $.arg),
+      seq($.arg_list, ",", " ", $.arg),
       $.arg
     ),
     arg: $ => seq(
@@ -100,7 +102,7 @@ module.exports = grammar({
     ),
 
     type_list: $ => choice(
-      seq($.type_list, ", ", $.type),
+      seq($.type_list, ",", " ", $.type),
       $.type
     ),
     type: $ => seq(

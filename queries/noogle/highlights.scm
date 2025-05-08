@@ -53,5 +53,14 @@
  "="
 ] @operator
 
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+]  @punctuation.bracket
+
 (arg
   arg_name: (identifier) @variable.parameter)
