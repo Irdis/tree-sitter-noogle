@@ -120,6 +120,7 @@ module.exports = grammar({
       $.string_literal,
       $.integer_literal,
       $.real_literal,
+      $.negative_literal,
       $.null_literal,
       $.boolean_literal,
       $.identifier
@@ -189,6 +190,8 @@ module.exports = grammar({
         ),
       ));
     },
+
+    negative_literal: $ => seq('-', choice($.integer_literal, $.real_literal)),
 
     boolean_literal: $ => choice('true', 'false'),
 

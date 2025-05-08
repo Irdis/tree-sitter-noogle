@@ -108,6 +108,10 @@
           "named": true
         },
         {
+          "type": "negative_literal",
+          "named": true
+        },
+        {
           "type": "null_literal",
           "named": true
         },
@@ -275,6 +279,25 @@
         },
         {
           "type": "namespace_part",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negative_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "real_literal",
           "named": true
         }
       ]
@@ -507,6 +530,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {

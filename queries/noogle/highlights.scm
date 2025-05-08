@@ -4,6 +4,7 @@
 [
   (real_literal)
   (integer_literal)
+  (negative_literal)
 ] @number
 
 [

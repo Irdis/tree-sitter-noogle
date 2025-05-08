@@ -711,6 +711,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "negative_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "null_literal"
         },
         {
@@ -1009,6 +1013,28 @@
           }
         ]
       }
+    },
+    "negative_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "integer_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "real_literal"
+            }
+          ]
+        }
+      ]
     },
     "boolean_literal": {
       "type": "CHOICE",
