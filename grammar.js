@@ -11,7 +11,7 @@ const decimalDigitSequence = /([0-9][0-9_]*[0-9]|[0-9])/;
 
 module.exports = grammar({
   name: "noogle",
-  extras: (_) => ["\r"],
+  extras: (_) => ["\r", " "],
   word: $ => $.identifier,
 
   rules: {
