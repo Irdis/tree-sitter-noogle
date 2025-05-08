@@ -251,15 +251,11 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "accessibility",
-          "named": true
-        },
-        {
-          "type": "static",
           "named": true
         }
       ]
@@ -349,10 +345,6 @@
         },
         {
           "type": "setter",
-          "named": true
-        },
-        {
-          "type": "static",
           "named": true
         }
       ]
@@ -498,10 +490,6 @@
     "named": false
   },
   {
-    "type": " = ",
-    "named": false
-  },
-  {
     "type": " {",
     "named": false
   },
@@ -543,6 +531,10 @@
   },
   {
     "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {
@@ -627,7 +619,7 @@
   },
   {
     "type": "static",
-    "named": true
+    "named": false
   },
   {
     "type": "true",

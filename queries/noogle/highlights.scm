@@ -11,7 +11,24 @@
   (null_literal)
 ] @constant.builtin
 
-;; Tokens
+(enum_signature
+  enum: (identifier) @type)
+(enum_signature
+  field: (identifier) @property.definition)
+
+(method_signature
+  name: (identifier) @function)
+
+(property_signature
+  name: (identifier) @property.definition)
+
+(method_signature
+  name: (identifier) @function)
+
+(path 
+  class: (identifier) @type)
+
+(namespace_part (identifier) @module)
 
 [
   "."
@@ -21,7 +38,20 @@
 [
  "get"
  "set"
+ "public"
+ "private"
+ "protected"
+ "internal"
+ "enum"
+ ".ctor"
 ] @keyword
+
+[
+ "="
+] @operator
+
+(arg
+  arg_type: (type) @type)
 
 (arg
   arg_name: (identifier) @variable.parameter)

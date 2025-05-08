@@ -35,7 +35,7 @@ module.exports = grammar({
     property_signature: $ => seq(
       $.accessibility,
       " ",
-      optional(seq($.static, " ")),
+      optional(seq("static", " ")),
       field("return_type", $.type),
       " ",
       field("name", $.identifier), 
@@ -57,7 +57,6 @@ module.exports = grammar({
       ";"
     ),
 
-    static: $ => "static",
     accessibility: $ => choice(
       "none",
       "private", 
@@ -71,7 +70,7 @@ module.exports = grammar({
     method_signature: $ => seq(
       $.accessibility,
       " ",
-      optional(seq($.static, " ")),
+      optional(seq("static", " ")),
       field("return_type", $.type),
       " ",
       field("name", choice($.identifier, '.ctor')), 
@@ -88,7 +87,7 @@ module.exports = grammar({
       field("arg_type", $.type),
       " ",
       field("arg_name", $.identifier),
-      optional(seq(" = ", $.default_value))
+      optional(seq(" ", "=", " ", $.default_value))
     ),
 
     enum_signature: $ => seq(
@@ -97,7 +96,7 @@ module.exports = grammar({
       field("enum", $.identifier),
       ".",
       field("field", $.identifier),
-      optional(seq(" = ", $.default_value))
+      optional(seq(" ", "=", " ", $.default_value))
     ),
 
     type_list: $ => choice(

@@ -1,5 +1,5 @@
 ICSharpCode.Decompiler.DecompilationProgress public void .ctor()
-ICSharpCode.Decompiler.PartialTypeInfo public TypeDefinitionHandle DeclaringTypeDefinitionHandle { get; }
+ICSharpCode.Decompiler.PartialTypeInfo public TypeDefinitionHandle DeclaringTypeDefinitionHandle { get; set; }
 ICSharpCode.Decompiler.PartialTypeInfo public string DebugOutput { get; }
 ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(ITypeDefinition declaringTypeDefinition)
 ICSharpCode.Decompiler.PartialTypeInfo public void .ctor(TypeDefinitionHandle declaringTypeDefinitionHandle)
