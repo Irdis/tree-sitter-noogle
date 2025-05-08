@@ -40,14 +40,17 @@
 ] @punctuation.delimiter
 
 [
- "get"
- "set"
  "public"
  "private"
  "protected"
  "internal"
- "enum"
  "static"
+] @keyword.modifier
+
+[
+ "get"
+ "set"
+ "enum"
  ".ctor"
 ] @keyword
 
