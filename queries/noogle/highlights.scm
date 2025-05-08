@@ -10,6 +10,7 @@
   (boolean_literal)
   (null_literal)
 ] @constant.builtin
+(simple_type) @type
 
 (enum_signature
   enum: (identifier) @type)
@@ -49,9 +50,6 @@
 [
  "="
 ] @operator
-
-(arg
-  arg_type: (type) @type)
 
 (arg
   arg_name: (identifier) @variable.parameter)
