@@ -47,6 +47,7 @@
  "protected"
  "internal"
  "enum"
+ "static"
  ".ctor"
 ] @keyword
 
