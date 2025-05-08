@@ -123,7 +123,7 @@ module.exports = grammar({
       $.negative_literal,
       $.null_literal,
       $.boolean_literal,
-      $.identifier
+      // $.identifier
     ),
 
     null_literal: $ => "null",
