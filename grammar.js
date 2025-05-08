@@ -16,7 +16,7 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat($.definition),
-    definition: $ => seq($.path, " ", $.signature, "\n"),
+    definition: $ => seq($.path, $.signature, "\n"),
     path: $ => seq(
       field("namespace", $.namespace_part), 
       ".", 
@@ -34,27 +34,23 @@ module.exports = grammar({
 
     property_signature: $ => seq(
       $.accessibility,
-      " ",
-      optional(seq("static", " ")),
+      optional("static"),
       field("return_type", $.type),
-      " ",
       field("name", $.identifier), 
       optional(seq(
-        " ",
         "{",
-        optional(seq(" ", $.getter)),
-        optional(seq(" ", $.setter)),
-        " ",
+        optional($.getter),
+        optional($.setter),
         "}"
       )),
     ),
     getter: $ => seq(
-      optional(seq($.accessibility, " ")),
+      optional($.accessibility),
       "get",
       ";"
     ),
     setter: $ => seq(
-      optional(seq($.accessibility, " ")),
+      optional($.accessibility),
       "set",
       ";"
     ),
@@ -71,10 +67,8 @@ module.exports = grammar({
 
     method_signature: $ => seq(
       $.accessibility,
-      " ",
-      optional(seq("static", " ")),
+      optional("static"),
       field("return_type", $.type),
-      " ",
       field("name", choice($.identifier, '.ctor')), 
       "(",
       field("parameters", optional($.arg_list)),
@@ -82,27 +76,25 @@ module.exports = grammar({
     ),
 
     arg_list: $ => choice(
-      seq($.arg_list, ",", " ", $.arg),
+      seq($.arg_list, ",", $.arg),
       $.arg
     ),
     arg: $ => seq(
       field("arg_type", $.type),
-      " ",
       field("arg_name", $.identifier),
-      optional(seq(" ", "=", " ", $.default_value))
+      optional(seq("=", $.default_value))
     ),
 
     enum_signature: $ => seq(
       "enum",
-      " ",
       field("enum", $.identifier),
       ".",
       field("field", $.identifier),
-      optional(seq(" ", "=", " ", $.default_value))
+      optional(seq("=", $.default_value))
     ),
 
     type_list: $ => choice(
-      seq($.type_list, ",", " ", $.type),
+      seq($.type_list, ",", $.type),
       $.type
     ),
     type: $ => seq(
