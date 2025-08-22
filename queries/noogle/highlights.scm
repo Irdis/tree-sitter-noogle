@@ -20,13 +20,10 @@
   field: (identifier) @property.definition)
 
 (method_signature
-  name: (identifier) @function)
+  name: (def_name) @function)
 
 (property_signature
-  name: (identifier) @property.definition)
-
-(method_signature
-  name: (identifier) @function)
+  name: (def_name) @property.definition)
 
 (path 
   class: (identifier) @type)

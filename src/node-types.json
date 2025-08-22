@@ -84,6 +84,25 @@
     }
   },
   {
+    "type": "def_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "namespace_part",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "default_value",
     "named": true,
     "fields": {},
@@ -224,7 +243,7 @@
             "named": false
           },
           {
-            "type": "identifier",
+            "type": "def_name",
             "named": true
           }
         ]
@@ -334,7 +353,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "def_name",
             "named": true
           }
         ]

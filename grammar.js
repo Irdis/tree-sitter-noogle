@@ -21,8 +21,17 @@ module.exports = grammar({
       field("namespace", $.namespace_part), 
       ".", 
       field("class", $.identifier)),
+
     namespace_part: $ => choice(
       seq($.namespace_part, ".", $.identifier),
+      $.identifier
+    ),
+
+    def_name: $ => seq(
+      optional(seq(
+        $.namespace_part, 
+        "."
+      )),
       $.identifier
     ),
 
@@ -36,7 +45,7 @@ module.exports = grammar({
       $.accessibility,
       optional("static"),
       field("return_type", $.type),
-      field("name", $.identifier), 
+      field("name", $.def_name), 
       optional(seq(
         "{",
         optional($.getter),
@@ -69,7 +78,7 @@ module.exports = grammar({
       $.accessibility,
       optional("static"),
       field("return_type", $.type),
-      field("name", choice($.identifier, '.ctor')), 
+      field("name", choice($.def_name, '.ctor')), 
       "(",
       field("parameters", optional($.arg_list)),
       ")",
